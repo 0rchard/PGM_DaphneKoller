@@ -1,0 +1,11 @@
+function factor = FeatureToFactor(feature)
+    factor = struct ('var', [], 'card', [], 'val', []);
+    if feature.var == 1 % theta_c
+        factor.var = 1;
+        factor.card = 26;
+        assign = feature.assignment;
+        idx = Assign
+    elseif feature.var == 2 % theta_{j,c,d}
+    else % theta_{c,d}
+    end
+end
