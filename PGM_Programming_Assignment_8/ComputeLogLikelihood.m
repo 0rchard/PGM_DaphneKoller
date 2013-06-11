@@ -55,7 +55,6 @@ for n=1:N % samples
             % disp(sprintf('|SAMPLE-%d| class %d, data %d, %f',n, k, i, t));
         end
         sum_k = sum_k + exp(t);        
-    end
-    
+    end    
     loglikelihood = loglikelihood + log(sum_k);
 end
