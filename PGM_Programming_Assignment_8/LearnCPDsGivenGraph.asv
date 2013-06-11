@@ -69,7 +69,7 @@ for i=1:10
             U_y = U_y(find(labels(:,k) == 1),:);
             X_y = X_y(find(labels(:,k) == 1));
             [theta_y sigma_y] = FitLinearGaussianParameters(X_y, U_y);
-            P.clg(i).theta(k,1:4) = [theta_y(4), theta_y(1), theta_y(2), theta_y(3)];
+            P.clg(i).theta(k,1:4) = [theta_y(4), theta_y(1), theta_;
             P.clg(i).sigma_y(k) = sigma_y;
             %disp(sprintf('POS:%d, K:%d, theta:[%f,%f,%f,%f]', i, k, theta_y(1), theta_y(2), theta_y(3), theta_y(4)));
             
@@ -78,7 +78,7 @@ for i=1:10
             U_x = U_x(find(labels(:,k) == 1),:);
             X_x = X_x(find(labels(:,k) == 1));
             [theta_x sigma_x] = FitLinearGaussianParameters(X_x, U_x);
-            P.clg(i).theta(k,5:8) = [theta_x(4), theta_x(1), theta_x(2), theta_x(3)];
+            P.clg(i).theta(k,5:8) = theta_x;
             P.clg(i).sigma_x(k) = sigma_x;
             
             U_angle = squeeze(dataset(:,par,:));
@@ -86,7 +86,7 @@ for i=1:10
             U_angle = U_angle(find(labels(:,k) == 1),:);
             X_angle = X_angle(find(labels(:,k) == 1));
             [theta_angle sigma_angle] = FitLinearGaussianParameters(X_angle, U_angle);
-            P.clg(i).theta(k,9:12) = [theta_angle(4), theta_angle(1), theta_angle(2), theta_angle(3)];
+            P.clg(i).theta(k,9:12) = theta_angle;
             P.clg(i).sigma_angle(k) = sigma_angle;
         end
     end
