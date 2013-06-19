@@ -50,27 +50,6 @@ for iter=1:maxIter
     P.c = zeros(1,K);
     P.c = sum(ClassProb, 1) / N;
     P.clg = repmat(struct('mu_y', [], 'sigma_y', [], 'mu_x', [], 'sigma_x', [], 'mu_angle', [], 'sigma_angle', [], 'theta', []), 1, 10);
-    [m, idx] = max(ClassProb, [], 2);
-    labels = zeros(N, K);
-    for i=1:N
-        labels(i, idx(i)) = 1;
-    end
-
-    for i=1:10
-        if G(i,1) == 0
-            P.clg(i).mu_y = zeros(1, K);
-            P.clg(i).sigma_y = zeros(1, K);
-            P.clg(i).mu_x = zeros(1, K);
-            P.clg(i).sigma_x = zeros(1, K);
-            P.clg(i).mu_angle = zeros(1, K);
-            P.clg(i).sigma_angle = zeros(1, K);
-        else
-            P.clg(i).sigma_y = zeros(1, K);
-            P.clg(i).sigma_x = zeros(1, K);
-            P.clg(i).sigma_angle = zeros(1, K);
-            P.clg(i).theta = zeros(K, 12);
-        end
-    end
 
     for i=1:10
         for k=1:K
@@ -124,7 +103,6 @@ for iter=1:maxIter
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % YOUR CODE HERE
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
     loglikelihood(iter) = 0.0;
     logPC = log(P.c);
     temp = 0.0 * zeros(N, K);
@@ -149,8 +127,7 @@ for iter=1:maxIter
                     t = t + t_1 + t_2 + t_3;
                 end
             end
-            ClassProb(n,k) = exp(t);
-            %disp(sprintf('|DEBUG|n:%d, k:%d, t:%f', n, k, t));
+            ClassProb(n,k) = exp(t);     
             temp(n,k) = t;
         end
         ClassProb(n,:) = NormalizeProb(ClassProb(n,:));

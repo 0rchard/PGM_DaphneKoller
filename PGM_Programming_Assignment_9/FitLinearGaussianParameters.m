@@ -66,7 +66,7 @@ Beta = Beta(:,1);
 
 cov_xx = cov(X, 1);
 %cov_xx = mean(X .* X) - mean(X) * mean(X);
-t = 0.0;
+t = 0;
 for i=1:N
     for j=1:N
         %cov_uij = cov(U(:,i), U(:,j), 1);
@@ -77,4 +77,8 @@ for i=1:N
 end
 
 sigma = sqrt(cov_xx - t);
-
+if sigma == 0 || ~isreal(sigma)
+	sigma = .01;
+else
+	sigma = sigma + .01;
+end

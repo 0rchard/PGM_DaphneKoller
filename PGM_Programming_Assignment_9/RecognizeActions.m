@@ -12,15 +12,14 @@ function [accuracy, predicted_labels] = RecognizeActions(datasetTrain, datasetTe
 
 % OUTPUTS
 % accuracy: recognition accuracy, defined as (#correctly classified examples / #total examples)
-% predicted_labels: N x 1 vector with the predicted labels for each of the instances in datasetTest, with N being the number of unknown test instances
-
-
+% predicted_labels: N x 1 vector with the predicted labels for each of the
+% instances in datasetTest, with N being the number of unknown test instances
 % Train a model for each action
 % Note that all actions share the same graph parameterization and number of max iterations
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % YOUR CODE HERE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%[P loglikelihood ClassProb PairProb] = EM_HMM(datasetTrain.actionData, datasetTrain.poseData, G, datasetTrain.InitialClassProb, datasetTrain.InitialPairProb, maxIter);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
